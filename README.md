@@ -13,6 +13,17 @@ Run [downloads_refGenome.s](downloads_refGenome.s) to download files. This step 
 We used [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) to get a comprehensive description sequencing reads' quality. This allows for visual and quantitative inspection of the data quality to inform data processing and filtering. Run [fastq.s](fastq.s).
 
 ## Data preprocessing and filtering
+Based of the FASTQC output, we filter the reads using [Trim-galore](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/), which provides flexible preprocessing of data reads. Run [Trimming.s](Trimming.s) to use chosen hyperparameters for these datasets.
 
+Note: one should asses data quality after any preprocessing step.
+
+## Align reads to the reference genome
+Here we use [hiSAT2](http://daehwankimlab.github.io/hisat2/) to identify the genes and DNA sequences from the human DNA that our reads come from for all conditions. Run [IndexSorting.s](IndexSorting.s) script.
+
+## Generate and structure data
+To inspect differences in gene regulation across treatments, we generated table of counts with patients (observations) as columns and genes as rows (features). We used [HTSeq](https://htseq.readthedocs.io/en/release_0.11.1/count.html), implemented in [htseq.s](htseq.s).
+
+## Gene expression analysis
+We extracted significantily modulated genes for across conditions, correcting for multiple data comparisons, did unsupervised exploration of data structure using multidimensional scaling (MDS) and draw predictions between treatment conditions using generalized linear models (GLMs). We use [edgeR](https://bioconductor.org/packages/release/bioc/html/edgeR.html), [GGally](https://cran.r-project.org/web/packages/GGally/index.html), [heatmap3](https://www.rdocumentation.org/packages/heatmap3/versions/1.1.7/topics/heatmap3), [biomaRt](https://bioconductor.org/packages/release/bioc/html/biomaRt.html), [statmod](https://cran.r-project.org/web/packages/statmod/index.html) and built in R modules to this end. Run [AnalysisVisualization.R](AnalysisVisualization.R) to visualize and analyze the sequencing data.
 
 
