@@ -1,6 +1,6 @@
 # Sequencing data processing and analysis
 
-Here we implemented a processing and analysis pipeline to extract information from sequencing data to provide insight for Multiple sclerosis (MS) treatments. 
+Here we implemented a processing and analysis pipeline to extract information from sequencing data to provide insight for Multiple sclerosis (MS) treatments. [Presentation with analysis and results here](SequencingDataAnalysis.pdf).
 
 **This preprocessing pipeline works on all transcriptomic sequencing data, and the analysis and visualization script can be used for any table of counts (genomics data and beyond).**
 
